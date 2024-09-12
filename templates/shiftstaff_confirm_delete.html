@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Shift Staff{% endblock %}
+{% block header %}Delete Shift Staff{% endblock %}
+
+{% block content %}
+<div class="card-body">
+    <h4>Are you sure you want to delete "{{ shift_staff.staff.full_name }}"?</h4>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="{% url 'shiftstaff_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

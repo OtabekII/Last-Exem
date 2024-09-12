@@ -1,0 +1,36 @@
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card-body">
+    <h2>Attendance List</h2>
+    <table class="table table-head-bg-info">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Staff Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for attendance in attendances %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ attendance.staff.full_name }}</td>
+                <td>{{ attendance.date }}</td>
+                <td>{{ attendance.status }}</td>
+            </tr>
+            {% empty %}
+            {% for staff in staffs%}
+            <tr>
+                <td colspan="4">{{forloop.counter}}</td>
+                <td colspan="4">{{staff.full_name}} {{staff.phone_number}} {{staff.address}} {{staff.email}}</td>
+            </tr>
+            {% endfor %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

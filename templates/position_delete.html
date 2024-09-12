@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Pozitsiyani O'chirish{% endblock %}
+
+{% block content %}
+<h2>Pozitsiyani O'chirish</h2>
+<p> Siz <strong>{{ position.title }}</strong> pozitsiyasini o'chirmoqchimisiz?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">O'chirish</button>
+    <a href="{% url 'position_list' %}" class="btn btn-secondary">Orqaga</a>
+</form>
+{% endblock %}

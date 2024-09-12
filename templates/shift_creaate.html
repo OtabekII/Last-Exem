@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Shift Staff{% endblock %}
+{% block header %}Create Shift Staff{% endblock %}
+
+{% block content %}
+<div class="card-body">
+    <h4>Create Shift Staff</h4>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="staff">Staff</label>
+            <select name="staff" class="form-control" required>
+                {% for staff in staff_list %}
+                <option value="{{ staff.id }}">{{ staff.full_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="shift">Shift</label>
+            <select name="shift" class="form-control" required>
+                {% for shift in shift_list %}
+                <option value="{{ shift.id }}">{{ shift }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="position">Position</label>
+            <select name="position" class="form-control" required>
+                {% for position in position_list %}
+                <option value="{{ position.id }}">{{ position }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="{% url 'shiftstaff_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

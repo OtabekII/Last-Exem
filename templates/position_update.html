@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Pozitsiyani Yangilash{% endblock %}
+
+{% block content %}
+<h2>Pozitsiyani Yangilash</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="title">Nom:</label>
+        <input type="text" class="form-control" id="title" name="title" value="{{ position.title }}" required>
+    </div>
+    <div class="form-group">
+        <label for="description">Tavsif:</label>
+        <textarea class="form-control" id="description" name="description" required>{{ position.description }}</textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Yangilash</button>
+    <a href="{% url 'position_list' %}" class="btn btn-secondary">Orqaga</a>
+</form>
+{% endblock %}

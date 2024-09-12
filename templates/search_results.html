@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>"{{ query }}" bo'yicha qidiruv natijalari</h1>
+
+    {% if results %}
+        <ul>
+        {% for staff in results %}
+            <li>{{ staff.full_name }} - {{ staff.email }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Hech qanday natija topilmadi.</p>
+    {% endif %}
+{% endblock %}

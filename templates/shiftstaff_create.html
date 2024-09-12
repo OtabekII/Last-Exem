@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Shift Staff{% endblock %}
+{% block header %}Create Shift Staff{% endblock %}
+
+{% block content %}
+<div class="card-body">
+    <h4>Create Shift Staff</h4>
+    <form method="POST">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="staff">Staff Name</label>
+            <input type="text" name="staff" class="form-control" placeholder="Enter staff name" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="shift">Shift</label>
+            <input type="text" name="shift" class="form-control" placeholder="Enter shift details" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="position">Position</label>
+            <input type="text" name="position" class="form-control" placeholder="Enter position" required>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="{% url 'shiftstaff_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Shift Staff List{% endblock %}
+{% block header %}Shift Staff List{% endblock %}
+
+{% block content %}
+<div class="card-body">
+    <a href="{% url 'shiftstaff_create' %}" class="btn btn-success">Add Shift Staff</a>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Full Name</th>
+                    <th>Shift Time</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for shift in shifts %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ shift.staff }}</td>
+                    <td>{{ shift.shift }}</td>
+                    <td>{{ shift.position }}</td>
+                    <td>
+                        <a href="{% url 'shiftstaff_update' shift.pk %}" class="btn btn-warning">Edit</a>
+                        <a href="{% url 'shiftstaff_delete' shift.pk %}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">No shift records found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

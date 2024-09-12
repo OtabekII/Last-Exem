@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Pozitsiyalar Ro'yxati{% endblock %}
+
+{% block content %}
+<h2>Pozitsiyalar Ro'yxati</h2>
+<a href="{% url 'position_create' %}" class="btn btn-primary mb-3">Yangi Pozitsiya Yaratish</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Harakatlar</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for position in positions %}
+        <tr>
+            <td>{{ position.id }}</td>
+            <td>{{ position.title }}</td>
+            <td>
+                <a href="{% url 'position_update' position.id %}" class="btn btn-warning btn-sm">Yangilash</a>
+                <a href="{% url 'position_delete' position.id %}" class="btn btn-danger btn-sm">O'chirish</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3" class="text-center">Hech qanday pozitsiya topilmadi.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
